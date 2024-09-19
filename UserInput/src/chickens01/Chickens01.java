@@ -18,11 +18,11 @@ public class Chickens01 {
     		totalEggs = eggsPerChicken * chickenCount;
     		
     	//dag 2:
-    		chickenCount ++;
+    		chickenCount = chickenCount + 1;
     		totalEggs = totalEggs + chickenCount * eggsPerChicken;
     		
     	//dag 3:
-    		chickenCount /=2.0 ;
+    		chickenCount /=2;
     		totalEggs = totalEggs + chickenCount * eggsPerChicken;
     	
     		sc.close();
