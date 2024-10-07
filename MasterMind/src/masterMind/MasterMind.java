@@ -10,75 +10,67 @@ public class MasterMind {
 		Random rand = new Random();
 
 		int attempts = 0;
-		boolean gameWon = false;
 
 		Scanner sc = new Scanner(System.in);
-		sc.useDelimiter("[\\s,]+");
 
-		int code1 = rand.nextInt(7);
-		int code2 = rand.nextInt(7);
-		int code3 = rand.nextInt(7);
-		int code4 = rand.nextInt(7);
+		int[] code = { rand.nextInt(7), rand.nextInt(7), rand.nextInt(7), rand.nextInt(7) };
 
 		int score = 0;
 
 		// Main Game Loop
 		while (attempts < 10) {
 			System.out.println("Numbers: 0-7");
-			System.out.println("Attempt " + (attempts += 1) + ": Enter your guess: (example: 1 2 3 4) ");
+			System.out.println("Attempt " + (attempts += 1) + ": Enter your guess: (example: 0 1 2 3) ");
 
-			int guess1 = sc.nextInt();
-			int guess2 = sc.nextInt();
-			int guess3 = sc.nextInt();
-			int guess4 = sc.nextInt();
+			int[] guess = { sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt() };
 
-			if (guess1 == code1) {
+			if (guess[0] == code[0]) {
 				System.out.print("Black ");
 				score = score + 1;
-			} else if (guess1 == code2) {
+			} else if (guess[0] == code[1]) {
 				System.out.print("White ");
-			} else if (guess1 == code3) {
+			} else if (guess[0] == code[2]) {
 				System.out.print("White ");
-			} else if (guess1 == code4) {
+			} else if (guess[0] == code[3]) {
 				System.out.print("White ");
 			} else {
 				System.out.print("- ");
 			}
 
-			if (guess2 == code2) {
+			if (guess[1] == code[1]) {
 				System.out.print("Black ");
 				score = score + 1;
-			} else if (guess2 == code1) {
+			} else if (guess[1] == code[0]) {
 				System.out.print("White ");
-			} else if (guess2 == code3) {
+			} else if (guess[1] == code[2]) {
 				System.out.print("White ");
-			} else if (guess2 == code4) {
+			} else if (guess[1] == code[3]) {
 				System.out.print("White ");
 			} else {
 				System.out.print("- ");
 			}
 
-			if (guess3 == code3) {
+			if (guess[2] == code[2]) {
 				System.out.print("Black ");
 				score = score + 1;
-			} else if (guess3 == code1) {
+			} else if (guess[2] == code[0]) {
 				System.out.print("White ");
-			} else if (guess3 == code2) {
+			} else if (guess[2] == code[1]) {
 				System.out.print("White ");
-			} else if (guess3 == code4) {
+			} else if (guess[2] == code[3]) {
 				System.out.print("White ");
 			} else {
 				System.out.print("- ");
 			}
 
-			if (guess4 == code4) {
+			if (guess[3] == code[3]) {
 				System.out.println("Black ");
 				score = score + 1;
-			} else if (guess4 == code1) {
+			} else if (guess[3] == code[0]) {
 				System.out.println("White ");
-			} else if (guess4 == code2) {
+			} else if (guess[3] == code[1]) {
 				System.out.println("White ");
-			} else if (guess4 == code3) {
+			} else if (guess[3] == code[2]) {
 				System.out.println("White ");
 			} else {
 				System.out.println("- ");
@@ -93,8 +85,11 @@ public class MasterMind {
 		if (score == 4) {
 			System.out.println("You have won! good job :D");
 		} else {
-			System.out.println("You have sadly lost, better luck next time! The code was: " + code1 + "." + code2 + "."
-					+ code3 + "." + code4);
+			System.out.println("You have sadly lost, better luck next time! The code was: " + code[0] + "-" + code[1]
+					+ "-" + code[2] + "-" + code[3]);
+
 		}
+		sc.close();
 	}
+
 }
