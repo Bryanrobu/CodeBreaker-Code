@@ -19,6 +19,7 @@ public class MasterMind {
 
 		// Main Game Loop
 		while (attempts < 10) {
+
 			System.out.println("Numbers: 0-7");
 			System.out.println("Attempt " + (attempts += 1) + ": Enter your guess: (example: 0 1 2 3) ");
 
@@ -76,12 +77,15 @@ public class MasterMind {
 				System.out.println("- ");
 			}
 
-			if (score == 4) {
+			if (score == 4)
+
+			{
 				attempts = 10;
 			} else {
 				score = 0;
 			}
 		}
+
 		if (score == 4) {
 			System.out.println("You have won! good job :D");
 		} else {
