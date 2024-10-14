@@ -3,7 +3,7 @@ package masterMind;
 import java.util.*;
 import java.util.Random;
 
-public class MasterMind {
+public class MasterMindcase {
 
 	public static void main(String[] args) {
 
@@ -32,70 +32,39 @@ public class MasterMind {
 				for (int i = 0; i < 4; i++) {
 					if (guess[i] > 7) {
 						System.out.println("Number higher then 7 detected, try again with numbers in between 0 and 7.\n");
-						attempts-=1;
+						attempts -= 1;
 						validGuess = false;
 						break;
 					}
 					if (guess[i] < 0) {
 						System.out.println("Number lower then 0 detected, try again with numbers in between 0 and 7.\n");
-						attempts-=1;
+						attempts -= 1;
 						validGuess = false;
 						break;
 					}
 				}
 				// checking the code
 				if (validGuess) {
-					if (guess[0] == code[0]) {
-						System.out.print("Black ");
-						score = score + 1;
-					} else if (guess[0] == code[1]) {
-						System.out.print("White ");
-					} else if (guess[0] == code[2]) {
-						System.out.print("White ");
-					} else if (guess[0] == code[3]) {
-						System.out.print("White ");
-					} else {
-						System.out.print("- ");
+					for (int o = 0; o < 4; o++) {
+						if (guess[o] == code[o]) {
+							System.out.print("Black ");
+							score++;
+						} else {
+							boolean found = false;
+							for (int j = 0; j < 4; j++) {
+								if (guess[o] == code[j] && o != j) { // Check if guess[o] is in the code but not in the
+																		// correct position
+									System.out.print("White ");
+									found = true;
+									break; // Break the inner loop
+								}
+							}
+							if (!found) {
+								System.out.print("- ");
+							}
+						}
 					}
-
-					if (guess[1] == code[1]) {
-						System.out.print("Black ");
-						score = score + 1;
-					} else if (guess[1] == code[0]) {
-						System.out.print("White ");
-					} else if (guess[1] == code[2]) {
-						System.out.print("White ");
-					} else if (guess[1] == code[3]) {
-						System.out.print("White ");
-					} else {
-						System.out.print("- ");
-					}
-
-					if (guess[2] == code[2]) {
-						System.out.print("Black ");
-						score = score + 1;
-					} else if (guess[2] == code[0]) {
-						System.out.print("White ");
-					} else if (guess[2] == code[1]) {
-						System.out.print("White ");
-					} else if (guess[2] == code[3]) {
-						System.out.print("White ");
-					} else {
-						System.out.print("- ");
-					}
-
-					if (guess[3] == code[3]) {
-						System.out.println("Black ");
-						score = score + 1;
-					} else if (guess[3] == code[0]) {
-						System.out.println("White ");
-					} else if (guess[3] == code[1]) {
-						System.out.println("White ");
-					} else if (guess[3] == code[2]) {
-						System.out.println("White ");
-					} else {
-						System.out.println("- ");
-					}
+					System.out.println();
 
 					// shortcut to exit loop if you have all numbers correct
 					if (score == 4)
@@ -110,10 +79,9 @@ public class MasterMind {
 				// catching a mistake made by writing down a different variable instead of an
 				// integer
 			} catch (InputMismatchException e) {
-				
 				System.out.println("Wrong input. Try placing 4 numbers divided by spaces.\n");
 				sc.nextLine();
-				attempts-=1;
+				attempts -= 1;
 				continue;
 			}
 		}
